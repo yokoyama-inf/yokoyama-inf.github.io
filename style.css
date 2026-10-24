@@ -1,0 +1,116 @@
+/* 研究者ホームページ：シンプルな日本語版（独自CSS） */
+:root {
+  color-scheme: light;
+  --ink: #25303a;
+  --muted: #596772;
+  --link: #2b607f;
+  --border: #e3e8ed;
+  --surface: #f8fafb;
+  --max: 920px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--link); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { color: #17405d; }
+a:focus-visible { outline: 2px solid #648da7; outline-offset: 4px; }
+.wrapper { width: min(calc(100% - 52px), var(--max)); margin-inline: auto; }
+.skip-link { position: absolute; left: 12px; top: -80px; background: #fff; padding: 7px 15px; z-index: 4; }
+.skip-link:focus { top: 12px; }
+.site-header { border-bottom: 1px solid var(--border); }
+.header-layout { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 70px; }
+.site-name { color: var(--ink); font-size: 15px; font-weight: 700; text-decoration: none; letter-spacing: .045em; white-space: nowrap; }
+.global-nav { display: flex; flex-wrap: wrap; gap: 8px 27px; align-items: center; }
+.global-nav a { font-size: 13px; text-decoration: none; color: #586773; padding: 19px 0 16px; border-bottom: 2px solid transparent; }
+.global-nav a:hover, .global-nav a[aria-current="page"] { color: var(--link); }
+.global-nav a[aria-current="page"] { border-bottom-color: var(--link); font-weight: 700; }
+main { min-height: calc(100vh - 140px); padding: 68px 0 96px; }
+.page-title { margin: 0 0 10px; font-size: clamp(29px, 3.5vw, 36px); letter-spacing: .025em; font-weight: 700; line-height: 1.4; }
+.page-lead { margin: 0 0 46px; color: var(--muted); font-size: 14px; }
+
+/* ホーム：写真＋最小限のプロフィール */
+.intro { display: grid; grid-template-columns: 210px 1fr; gap: 56px; align-items: start; }
+.portrait { margin: 0; width: 210px; }
+.portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; border-radius: 5px; background: #eff2f2; }
+.intro-content h1 { margin: -5px 0 9px; font-size: clamp(32px, 4.1vw, 43px); line-height: 1.4; font-weight: 700; letter-spacing: .08em; }
+.affiliation { margin: 0 0 7px; color: #4c5d69; font-size: 15px; }
+.role { margin: 0; color: #74818a; font-size: 13px; }
+.home-block { margin-top: 38px; }
+.home-block:first-of-type { margin-top: 41px; }
+.home-block h2 { font-size: 18px; font-weight: 700; margin: 0 0 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.home-block p { margin: 0; font-size: 14px; color: #42525d; }
+.interest-list { margin: 0; padding-left: 1.5em; font-size: 14px; color: #42525d; }
+.interest-list li { padding: 1px 0; }
+.contact-links { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 8px; }
+.mini-note { display: block; color: #89949a; font-size: 12px; margin-top: 8px; }
+
+/* 研究業績：メニューはひとつ、ページ内に発表種別ごとの節を設ける */
+.pub-index { display: flex; flex-wrap: wrap; gap: 10px 24px; margin: -20px 0 45px; font-size: 13px; }
+.pub-index a { text-decoration: none; border-bottom: 1px solid #a7c2d0; }
+.pub-section { margin: 0 0 58px; scroll-margin-top: 35px; }
+.pub-section h2 { margin: 0 0 17px; font-size: 21px; line-height: 1.5; padding: 0 0 12px; border-bottom: 1px solid var(--border); }
+.pub-type { font-size: 13px; font-weight: normal; color: #667480; margin-left: 5px; }
+.works { margin: 0; padding: 0; list-style: none; }
+.work { display: grid; grid-template-columns: 38px minmax(0,1fr); gap: 14px; border-bottom: 1px solid var(--border); padding: 23px 2px; }
+.work-number { font-variant-numeric: tabular-nums; font-size: 12px; color: #7a858d; padding-top: 3px; white-space: nowrap; }
+.work-title { margin: 0 0 7px; font-size: 16px; font-weight: 650; line-height: 1.65; overflow-wrap: anywhere; }
+.work-byline, .work-source { margin: 2px 0; font-size: 14px; color: #4d5c66; }
+.work-meta { display: flex; flex-wrap: wrap; gap: 10px 13px; align-items: center; margin-bottom: 8px; }
+.work-year { font-size: 12px; font-weight: 700; color: var(--link); font-variant-numeric: tabular-nums; }
+.work-kind { color: #637480; font-size: 12px; }
+.work-links { font-size: 13px; margin: 8px 0 0; }
+.self-author { font-weight: 750; color: #26323d; }
+.math-lnatural { white-space: nowrap; font-family: Georgia, "Times New Roman", serif; font-style: normal; }
+.math-lnatural sup { font-size: .68em; line-height: 0; position: relative; top: -.13em; }
+.link-divider { color: #a4b1ba; margin: 0 4px; }
+.draft-info { margin: 18px 0 0; padding: 11px 15px; border-left: 3px solid #b8cbd7; background: var(--surface); color: #61717d; font-size: 12px; }
+
+/* 経歴：参考サイトのように項目ごとに見出しと日付を整理 */
+.cv-section { margin: 0 0 52px; }
+.cv-section h2 { margin: 0 0 16px; border-bottom: 1px solid var(--border); padding: 0 0 11px; font-size: 21px; line-height: 1.5; }
+.timeline { margin: 0; padding: 0; list-style: none; }
+.timeline li { display: grid; grid-template-columns: 185px 1fr; gap: 22px; padding: 15px 0; border-bottom: 1px solid #f0f2f4; }
+.timeline time, .timeline .date { font-size: 13px; color: #65737c; white-space: normal; }
+.timeline p { margin: 0; font-size: 14px; }
+.timeline .subtext { margin-top: 4px; color: #73818a; font-size: 12px; }
+.empty-note { color: #818d94; margin: 0; font-size: 13px; }
+.site-footer { border-top: 1px solid var(--border); }
+.footer-layout { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 20px; min-height: 72px; font-size: 12px; color: #88949d; }
+.footer-layout a { color: #6c7d87; text-decoration: none; }
+@media (max-width: 760px) {
+  main { padding: 45px 0 68px; }
+  .intro { grid-template-columns: 180px 1fr; gap: 33px; }
+  .portrait { width: 180px; }
+  .home-block { margin-top: 29px; }
+  .home-block:first-of-type { margin-top: 28px; }
+  .intro-content h1 { font-size: 36px; }
+  .timeline li { grid-template-columns: 130px 1fr; gap: 16px; }
+}
+@media (max-width: 560px) {
+  .wrapper { width: min(calc(100% - 38px), var(--max)); }
+  .header-layout { display: block; min-height: auto; padding-top: 15px; }
+  .global-nav { gap: 0 23px; }
+  .global-nav a { padding: 7px 0 11px; font-size: 13px; }
+  .intro { display: flex; flex-direction: column; gap: 25px; }
+  .portrait { width: 174px; }
+  .intro-content { width: 100%; }
+  .intro-content h1 { font-size: 33px; margin-bottom: 6px; }
+  .affiliation { font-size: 14px; }
+  .page-lead { margin-bottom: 34px; }
+  .work { grid-template-columns: 34px minmax(0,1fr); gap: 10px; padding: 20px 1px; }
+  .pub-index { margin: -12px 0 30px; gap: 7px 20px; }
+  .pub-section h2 { font-size: 19px; }
+  .work-number { font-size: 11px; }
+  .work-title { font-size: 15px; }
+  .timeline li { display: block; padding: 14px 0; }
+  .timeline .date, .timeline time { display: block; margin-bottom: 3px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
